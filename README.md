@@ -30,8 +30,8 @@ Updates of `/tmp/work_dir/`
 ```bash
 tree -L 2 /tmp/work_dir/
 # /tmp/work_dir/
-# ├── 123.pkl.dc
-# └── data1.pkl.dc
+# ├── 123.o.pkl.dc
+# └── data1.o.pkl.dc
 # 0 directories, 2 files
 ```
 Deleting objects from `DataCenter`
@@ -49,31 +49,37 @@ tree -L 2 /tmp/work_dir/
 # /tmp/work_dir/
 # 0 directories, 0 files
 ```
-Using `pandas` with `DataCenter`
+Using `pandas`/`Series`/`numpy` with `DataCenter`
 ```python
 from data_center import DataCenter
 import pandas as pd
+import numpy as np
 
 
 dc1 = DataCenter("/tmp/work_dir/")
-dc1["df"] = pd.DataFrame({})
+dc1["data_frame"] = pd.DataFrame({})
+dc1["range"] = pd.Series([1,2,3,4])
+dc1["ones"] = np.ones([10,40,60,70])
 
 ```
 Updates of `/tmp/work_dir/`
 ```bash
 tree -L 2 /tmp/work_dir/
 # /tmp/work_dir/
-# └── df.parquet.dc
+# ├── data_frame.df.parquet.dc
+# ├── ones.np.parquet.dc
+# └── range.sr.parquet.dc
 
-# 0 directories, 1 file
+# 0 directories, 3 files
+
 ```
-Deleting `pandas` object from `DataCenter`
+Deleting all objects from `DataCenter`
 ```python
 from data_center import DataCenter
 
 
 dc1 = DataCenter("/tmp/work_dir/")
-del dc1["df"]
+dc1.clear()
 ```
 Updates of `/tmp/work_dir/`
 ```bash
@@ -105,7 +111,7 @@ print(f"{list(dc2.items())=}") # returns `list(dc2.items())=[('variable', 123)]`
 tree -L 2 /tmp/work_dir/
 # /tmp/work_dir/
 # └── dc2
-#     └── variable.pkl.dc
+#     └── variable.o.pkl.dc
 # 1 directory, 1 files
 ```
 # Contributing to `DataCenter`
