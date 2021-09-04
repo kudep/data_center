@@ -10,7 +10,6 @@
 ## Installation
 ```bash
 pip install git+https://github.com/kudep/data_center.git@dev
-make venv
 ```
 
 ## Use `DataCenter` 
