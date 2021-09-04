@@ -45,16 +45,15 @@ setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        # "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.6",
         # "Programming Language :: Python :: 3.7",
         # "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
     ],
     keywords="data_working",  # Optional
     # package_dir={"": "data_center"},  # Optional
     packages=find_packages(where="."),  # Required
-    python_requires=">=3.9, <4",
+    python_requires=">=3.6, <4",
     # install_requires=[],  # Optional
     # extras_require={"dev": ["check-manifest"], "test": ["coverage"]}, # Optional
     # package_data={"sample": ["package_data.dat"]}, # Optional
