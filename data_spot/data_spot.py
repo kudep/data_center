@@ -25,7 +25,7 @@ class DataSpot:
         self.root = pathlib.Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
         self.name = self.root.name
-        self.dcs = DataSpots(self.root)
+        self.data_spots = DataSpots(self.root)
 
     def _map(self):
         return {file.name.replace("".join(file.suffixes), ""): file for file in self.root.glob("*.dc")}
