@@ -27,12 +27,12 @@ def read_requirements():
 
 
 setup(
-    name="data_center",
+    name="data_spot",
     version="0.1.a1",
     description=description,
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/kudep/data_center",
+    url="https://github.com/kudep/data_spot",
     author="Denis Kuznetsov",
     author_email="kuznetsov.den.p@gmail.com",
     classifiers=[  # Optional
@@ -50,8 +50,8 @@ setup(
         # "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3 :: Only",
     ],
-    keywords="data_working",  # Optional
-    # package_dir={"": "data_center"},  # Optional
+    keywords="data",  # Optional
+    # package_dir={"": "data_spot"},  # Optional
     packages=find_packages(where="."),  # Required
     python_requires=">=3.6, <4",
     # install_requires=[],  # Optional

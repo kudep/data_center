@@ -20,12 +20,12 @@ except Exception:
     np = False
 
 
-class DataCenter:
+class DataSpot:
     def __init__(self, root: Union[pathlib.Path, str]):
         self.root = pathlib.Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
         self.name = self.root.name
-        self.dcs = DataCenters(self.root)
+        self.dcs = DataSpots(self.root)
 
     def _map(self):
         return {file.name.replace("".join(file.suffixes), ""): file for file in self.root.glob("*.dc")}
@@ -98,14 +98,14 @@ class DataCenter:
             yield self.__getitem__(key)
 
 
-class DataCenters:
+class DataSpots:
     def __init__(self, root: Union[pathlib.Path, str]):
         self.root = pathlib.Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
         self.name = self.root.name
 
     def _map(self):
-        return {file.name: DataCenter(file) for file in self.root.glob("*") if file.is_dir()}
+        return {file.name: DataSpot(file) for file in self.root.glob("*") if file.is_dir()}
 
     def keys(self):
         return self._map().keys()

@@ -1,25 +1,25 @@
-# `DataCenter`
+# `DataSpot`
 
-`DataCenter` provides convenient work with data on disk space in python.
+`DataSpot` provides convenient work with data on disk space in python.
 
 # Links
-[Github](https://github.com/kudep/data_center)
+[Github](https://github.com/kudep/data_spot)
 
 # Quick Start
 
 ## Installation
 ```bash
-pip install git+https://github.com/kudep/data_center.git@dev
+pip install git+https://github.com/kudep/data_spot.git@dev
 ```
 
-## Use `DataCenter` 
-Create `DataCenter` for `/tmp/work_dir/` directory and saving/getting data by `DataCenter`.
+## Use `DataSpot` 
+Create `DataSpot` for `/tmp/work_dir/` directory and saving/getting data by `DataSpot`.
 ```python
-from data_center import DataCenter
+from data_spot import DataSpot
 
 
-dc1 = DataCenter("/tmp/work_dir/")
-# save data to data center
+dc1 = DataSpot("/tmp/work_dir/")
+# save data to Data Spot
 dc1["data1"] = {"1": [1, 2, 3, 4], "2": {"13": 1, "21": 2}}
 dc1["123"] = 123
 print(f"{dc1.keys()=}") # returns `dc1.keys()=dict_keys(['123', 'data1'])`
@@ -34,12 +34,12 @@ tree -L 2 /tmp/work_dir/
 # └── data1.o.pkl.dc
 # 0 directories, 2 files
 ```
-Deleting objects from `DataCenter`
+Deleting objects from `DataSpot`
 ```python
-from data_center import DataCenter
+from data_spot import DataSpot
 
 
-dc1 = DataCenter("/tmp/work_dir/")
+dc1 = DataSpot("/tmp/work_dir/")
 del dc1["data1"]
 del dc1["123"]
 ```
@@ -49,14 +49,14 @@ tree -L 2 /tmp/work_dir/
 # /tmp/work_dir/
 # 0 directories, 0 files
 ```
-Using `pandas`/`Series`/`numpy` with `DataCenter`
+Using `pandas`/`Series`/`numpy` with `DataSpot`
 ```python
-from data_center import DataCenter
+from data_spot import DataSpot
 import pandas as pd
 import numpy as np
 
 
-dc1 = DataCenter("/tmp/work_dir/")
+dc1 = DataSpot("/tmp/work_dir/")
 dc1["data_frame"] = pd.DataFrame({})
 dc1["range"] = pd.Series([1,2,3,4])
 dc1["ones"] = np.ones([10,40,60,70])
@@ -73,12 +73,12 @@ tree -L 2 /tmp/work_dir/
 # 0 directories, 3 files
 
 ```
-Deleting all objects from `DataCenter`
+Deleting all objects from `DataSpot`
 ```python
-from data_center import DataCenter
+from data_spot import DataSpot
 
 
-dc1 = DataCenter("/tmp/work_dir/")
+dc1 = DataSpot("/tmp/work_dir/")
 dc1.clear()
 ```
 Updates of `/tmp/work_dir/`
@@ -89,17 +89,17 @@ tree -L 2 /tmp/work_dir/
 ```
 
 
-## Use many `DataCenter`s 
-Create `DataCenter` for `/tmp/work_dir` directory and saving/getting data by `DataCenter`.
+## Use many `DataSpot`s 
+Create `DataSpot` for `/tmp/work_dir` directory and saving/getting data by `DataSpot`.
 ```python
-from data_center import DataCenter
+from data_spot import DataSpot
 
 
-dc1 = DataCenter("/tmp/work_dir")
-# create new DataCenter and it's called `dc2`
+dc1 = DataSpot("/tmp/work_dir")
+# create new DataSpot and it's called `dc2`
 dc2 = dc1.dcs.get("dc2")
 print(f"{dc1.dcs.keys()=}") # returns `dc1.dcs.keys()=dict_keys(['dc2'])`
-# get created DataCenter `dc2` from data center `dc1`
+# get created DataSpot `dc2` from Data Spot `dc1`
 dc2 = dc1.dcs["dc2"]
 # dc2["df"] = pd.DataFrame({1: [1, 2, 3, 4]})
 dc2["variable"] = 123
@@ -114,6 +114,6 @@ tree -L 2 /tmp/work_dir/
 #     └── variable.o.pkl.dc
 # 1 directory, 1 files
 ```
-# Contributing to `DataCenter`
+# Contributing to `DataSpot`
 
-Please refer to [CONTRIBUTING.md](https://github.com/kudep/data_center/dev/CONTRIBUTING.md).
+Please refer to [CONTRIBUTING.md](https://github.com/kudep/data_spot/dev/CONTRIBUTING.md).
